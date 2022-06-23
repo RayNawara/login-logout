@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../App.scss";
 
@@ -22,6 +23,7 @@ const showUser = async (id) => {
 };
 
 const Login = () => {
+  const nav = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -55,7 +57,7 @@ const Login = () => {
       setIsLoggedin(true);
       setEmail("");
       setPassword("");
-      return;
+      nav("/home");
     } else {
       console.log("User not found");
     }
